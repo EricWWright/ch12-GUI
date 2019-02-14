@@ -2,7 +2,8 @@ package jframe;
 
 import java.awt.*; 
 import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.border.*;
+//import java.awt.event.*;
 
 public class Layouts {
 	JFrame myFrame;
@@ -16,7 +17,10 @@ public class Layouts {
 		
 		JPanel myPanel = (JPanel)myFrame.getContentPane();
 		
-		//FlowLayout layout = new FlowLayout();
+		FlowLayout layout = new FlowLayout();
+		
+		Border myBorder = BorderFactory.createMatteBorder(20, 10, 20, 10, Color.red);
+		myPanel.setBorder(myBorder);
 		
 		//GridLayout layout = new GridLayout(3,2);
 		
@@ -24,7 +28,9 @@ public class Layouts {
 		//layout.setHgap(35);
 		//layout.setVgap(35);
 		
-		BorderLayout layout = new BorderLayout(5,10);
+		//BorderLayout layout = new BorderLayout(5,10);
+		
+		//BoxLayout layout = new BoxLayout(myPanel, BoxLayout.Y_AXIS);
 		
 		myPanel.setLayout(layout);
 		myFrame.setSize(550, 150);
@@ -34,14 +40,18 @@ public class Layouts {
 	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		appleButton = new JButton("Apple");
-		myPanel.add(appleButton, BorderLayout.PAGE_END);
+		myPanel.add(appleButton); //BorderLayout .PAGE_START .NORTH
 		myFrame.setContentPane(myPanel);
 		orangeButton = new JButton("Orange");
-		myPanel.add(orangeButton, BorderLayout.PAGE_START);
+		myPanel.add(orangeButton); //BorderLayout .PAGE_END .SOUTH
 		pearButton = new JButton("Pear");
-		myPanel.add(pearButton, BorderLayout.LINE_START);
+		myPanel.add(pearButton); //BorderLayout .LINE_START .EAST
 		bananaButton = new JButton("Banana");
-		myPanel.add(bananaButton, BorderLayout.PAGE_END);
+		myPanel.add(bananaButton); //BorderLayout .LINE_END .WEST
+		
+		//appleButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		//pearButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		//bananaButton.setAlignmentY(Component.CENTER_ALIGNMENT);
 		
 		myFrame.setVisible(true);
 		
